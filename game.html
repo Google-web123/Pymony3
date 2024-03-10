@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta thhp-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة الويب الخاصة بك</title>
+    <style>
+   body{
+     background-color: #00B4FF;
+   }
+        /* أسلوب CSS لتحديد الصورة في الجانب الأيسر بحجم 32px */
+        #icon {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+
+        /* أسلوب CSS لتحديد مظهر القائمة الفرعية */
+        #submenu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 40px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            width: 160px;
+            height: 460px;
+            background-color: #009FFF;
+          
+        }
+        #submenu a{
+          color: black;
+              text-decoration: none;
+        }
+        
+        
+        
+       #counter {
+      font-size: 30px;
+    }
+
+    #gem {
+      font-size: 30px;
+    }
+
+    #image {
+      cursor: pointer;
+      width: 78%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .button-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+    }
+    
+    .green-button {
+      background-color: green;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+    }     
+    
+
+
+        
+    </style>
+</head>
+<body>
+
+  
+
+    <!-- الصورة في الجانب الأيسر -->
+    <img id="icon" src="https://i.imgur.com/Fk9KCec.png" alt="Icon"    onclick="toggleSubmenu()">
+
+    <!-- القائمة الفرعية -->
+    <div id="submenu">
+        <!-- يمكنك إضافة المحتوى الذي تريده هنا -->
+ <a href="">صفحة رئيسية</a>
+ <br />
+ <a href="home.html">سحب</a>
+ <br />
+ <a href="https://google-web123.github.io/Rtyy/">الهديا</a>
+ <br />
+ <a href="">المزيد من الألعاب</a>
+     <h4>PayMoney3³</h4>
+
+    </div>
+  <div class="button-container">
+
+  </div>
+            <center>
+  <div id="counter">0 <span id="gem">$</span></div>
+            </center>
+                      <center>
+  <img id="image" src="https://i.imgur.com/AKJzYMf.png" alt="Image" onclick="increaseCounter()">
+            </center>
+
+            <center>
+<div id="timer1" class="timer">00:00</div>
+=
+<div id="timer2" class="timer">00:00$</div>
+                    </center>
+   <br />
+                       <center>
+     <h2>المرجو منك عدم الخروج من الموقع</h2>
+     <h4> الموجد في الفوق مؤقت دخولك الى الموقع وفي الخانة الثاني يتم تحويل وقتك الى المال ويمكنك سحب من $1</h4>
+                               </center>
+      
+    
+    <!-- السكربت اللازم لتحديث حالة القائمة الفرعية -->
+    <script>
+        function toggleSubmenu() {
+            var submenu = document.getElementById("submenu");
+            submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+        }
+        
+          let count = 0;
+      
+          function increaseCounter() {
+            count++;
+            document.getElementById('counter').innerText = count + '$';
+          }
+          
+    
+    
+    function createTimer(id, initialMinutes, initialSeconds, includeDollar) {
+    let minutes = initialMinutes || 0;
+    let seconds = initialSeconds || 0;
+
+    const timerElement = document.getElementById(id);
+
+    function updateTimer() {
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        const formattedSeconds = String(seconds).padStart(2, '0');
+        const dollarSign = includeDollar ? '$' : '';
+        timerElement.textContent = `${formattedMinutes}:${formattedSeconds}${dollarSign}`;
+    }
+
+    function updateCountdown() {
+        if (minutes === 90 && seconds === 4) {
+            clearInterval(intervalId); // توقف عند الحد الأقصى
+            alert(`انتهى المؤقت ${id}`);
+        } else {
+            if (seconds === 59) {
+                minutes++;
+                seconds = 0;
+            } else {
+                seconds++;
+            }
+            updateTimer();
+        }
+    }
+
+    const intervalId = setInterval(updateCountdown, 1000); // تحديث كل ثانية
+}
+
+// إنشاء مؤقتات مع Id مختلفة
+createTimer('timer1', 1, 4, false); // لا يتضمن رمز الدولار
+createTimer('timer2', 0, 30, true); // يتضمن رمز الدولار
+// يمكنك إضافة المزيد حسب الحاجة
+
+      
+      
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    </script>
+
+</body>
+</html>
